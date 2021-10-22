@@ -1,8 +1,12 @@
 ---
-- name: Add group
+- name: Add IAM group
   hosts: localhost
   tasks:
-  - name: Create a group
-    community.aws.iam_group:
-      name: DevOps
+  - name: Create Two Groups, Mario and Luigi
+    community.aws.iam:
+      iam_type: group
+      name: "{{ item }}"
       state: present
+    loop:
+     - DevOps
+    register: new_groups

@@ -8,17 +8,15 @@
   gather_facts: true
   tasks:
   - name: Install required software
-    apt: name={{ item }} state=present
-    become: yes
+    # when: CONDITION HER
+    apt: 
+      name: "{{ item }}"
+      state: present
+      update_cache: yes
     with_items:
-      - apache2
-      - mysql-server
-      - php7.2-mysql
-      - php7.2
-      - libapache2-mod-php7.2
-      - python-mysqldb
-    
-
+    - apache2
+    - php7.4 
+      
     
 
   - name : Get wordpress
