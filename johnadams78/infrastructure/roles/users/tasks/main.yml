@@ -1,0 +1,22 @@
+---
+- name: Add IAM users
+  hosts: localhost
+  tasks:
+  - name: Create four new IAM users with API keys
+    community.aws.iam:
+      iam_type: user
+      name: "{{ item }}"
+      state: present
+      password: "ansible123456789@_eAerdfhksheJKHJKH$%#"
+      access_key_state: create
+    loop:
+      - john
+      - ben
+      - lisa
+      - kelly
+      - lorry 
+      
+  - name: Create a group
+    community.aws.iam_group:
+      name: DevOps
+      state: present

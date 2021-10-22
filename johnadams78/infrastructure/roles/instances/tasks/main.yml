@@ -1,0 +1,11 @@
+---
+- name: Add ec2
+  hosts: localhost
+  tasks:
+  - amazon.aws.ec2:
+      key_name: laptop
+      instance_type: t2.micro
+      image: ami-00399ec92321828f5
+      wait: yes
+      count: 4
+      region: us-east-2

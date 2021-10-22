@@ -1,0 +1,8 @@
+---
+- name: Add group
+  hosts: localhost
+  tasks:
+  - name: Create a group
+    community.aws.iam_group:
+      name: DevOps
+      state: present

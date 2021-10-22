@@ -1,0 +1,28 @@
+---
+# tasks file for wordpress_ubuntu
+- name: install wordpress
+  remote_user: ubuntu
+  hosts: all
+  become: true
+  become_user: root
+  gather_facts: true
+  tasks:
+  - name: Install required software
+    apt: name={{ item }} state=present
+    become: yes
+    with_items:
+      - apache2
+      - mysql-server
+      - php7.2-mysql
+      - php7.2
+      - libapache2-mod-php7.2
+      - python-mysqldb
+    
+
+    
+
+  - name : Get wordpress
+    get_url:
+      url: https://wordpress.org/wordpress-4.0.32.tar.gz
+      dest: /tmp/wordpress-4.0.32.tar.gz
+      mode: '0440'
